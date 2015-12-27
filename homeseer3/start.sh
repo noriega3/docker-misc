@@ -9,7 +9,7 @@ HS_URL=$(curl -sL http://homeseer.com/current-downloads.html | grep -Po 'http://
 # Download and untar if versions are not the same
 if [ "$VERSION" != "$HS_URL" ]; then
   echo "Downloading $HS_URL ..."
-  mkdir -p /HomeSeer
+  mkdir -p /HomeSeer && ln -s /HomeSeer /usr/local/HomeSeer
   wget -qO - "${HS_URL}" | tar -C /HomeSeer -zx --strip-components 1
   echo "$HS_URL" > /HomeSeer/version.txt
 fi
