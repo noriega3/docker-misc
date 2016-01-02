@@ -23,7 +23,8 @@ ADD http://www.dresden-elektronik.de/rpi/deconz/deconz-latest.deb /tmp
 ADD start.sh /
 
 RUN dpkg -i /tmp/gcfflasher-latest.deb /tmp/deconz-latest.deb && rm /tmp/*.deb
-RUN ln -sf /root /home/root && chmod +x /start.sh
+RUN ln -sf /root /home/root && \
+	chmod +x /start.sh
 
 ENV DISPLAY=:1
 ENV USER=root
