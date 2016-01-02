@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 ADD http://www.dresden-elektronik.de/rpi/gcfflasher/gcfflasher-latest.deb /tmp
 ADD http://www.dresden-elektronik.de/rpi/deconz/deconz-latest.deb /tmp
-ADD passwd /root/.vnc/passwd
 ADD start.sh /
 
 RUN dpkg -i /tmp/gcfflasher-latest.deb /tmp/deconz-latest.deb && rm /tmp/*.deb
