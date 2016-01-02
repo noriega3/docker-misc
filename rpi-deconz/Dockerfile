@@ -7,6 +7,8 @@ MAINTAINER jonathan@nrgup.net
 
 EXPOSE 80 5901
 
+VOLUME /config
+
 RUN apt-get update && apt-get install --no-install-recommends -y \
 	libqt4-core \
 	libqtgui4 \
@@ -24,6 +26,8 @@ ADD start.sh /
 
 RUN dpkg -i /tmp/gcfflasher-latest.deb /tmp/deconz-latest.deb && rm /tmp/*.deb
 RUN ln -sf /root /home/root && \
+	mkdir -p /home/root/.local/share/data/dresden-elektronik/deCONZ && \
+	ln -sf /home/root/.local/share/data/dresden-elektronik/deCONZ /config && \
 	chmod +x /start.sh
 
 ENV DISPLAY=:1
