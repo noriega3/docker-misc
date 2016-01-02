@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	sudo \
 	curl \
 	wget
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD http://www.dresden-elektronik.de/rpi/gcfflasher/gcfflasher-latest.deb /tmp
 ADD http://www.dresden-elektronik.de/rpi/deconz/deconz-latest.deb /tmp
