@@ -1,4 +1,4 @@
-FROM bradsjm/rpi-vnc4server:latest
+FROM bradsjm/rpi-tightvncserver:latest
 
 MAINTAINER jonathan@nrgup.net
 
