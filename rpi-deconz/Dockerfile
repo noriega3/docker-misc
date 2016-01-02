@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	libqtgui4 \
 	libudev0 \
 	libcap2-bin \
+	blackbox \
 	sudo \
 	curl \
 	wget
