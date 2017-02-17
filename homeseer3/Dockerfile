@@ -5,6 +5,6 @@ RUN apt-get update && apt-get install -y \
 
 ADD start.sh /
 
-VOLUME [ "/HomeSeer" ]
+VOLUME [ "/data" ]
 
 CMD ["sh", "/start.sh"]
