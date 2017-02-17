@@ -2,12 +2,12 @@
 trap exit 0 SIGTERM
 export LANG=en_US.UTF-8
 
-TIMEZONE=${TIMEZONE:-"America/Los_Angeles"}
+TIMEZONE=${TIMEZONE:-"America/Chicago"}
 echo $TIMEZONE > /etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 
 # Get current version
-[ -f /HomeSeer/version.txt ] && VERSION=$(cat /HomeSeer/version.txt)
+[ -f /data/HomeSeer/version.txt ] && VERSION=$(cat /data/HomeSeer/version.txt)
 
 # Get remote version
 HS_URL=$(curl -sL http://homeseer.com/current-downloads.html | grep -Po 'http://homeseer.com/updates3/hs3_linux_3[0-9_.]+.tar.gz')
@@ -15,17 +15,16 @@ HS_URL=$(curl -sL http://homeseer.com/current-downloads.html | grep -Po 'http://
 # Download and untar if versions are not the same
 if [ "$VERSION" != "$HS_URL" ]; then
   echo "Downloading $HS_URL ..."
-  mkdir -p /HomeSeer && ln -s /HomeSeer /usr/local/HomeSeer
-  wget -qO - "${HS_URL}" | tar -C /HomeSeer -zx --strip-components 1
-  echo "$HS_URL" > /HomeSeer/version.txt
+  mkdir -p /data/HomeSeer && ln -s /data/HomeSeer /usr/local/HomeSeer
+  wget -qO - "${HS_URL}" | tar -C /data/HomeSeer -zx --strip-components 1
+  echo "$HS_URL" > /data/HomeSeer/version.txt
 fi
 
-chown -R root:root /HomeSeer
+chown -R root:root /data
 
 # bug fix for case sensitive filesystems
 # without this myhs.homeseer.com wont load icons
-ln -s /HomeSeer/html/images/homeseer /HomeSeer/html/images/HomeSeer
+ln -s /data/HomeSeer/html/images/homeseer /data/HomeSeer/html/images/HomeSeer
 
 # Execute
-cd /HomeSeer
-exec mono HSConsole.exe --log
+cd /data/HomeSeer && exec mono HSConsole.exe --log
