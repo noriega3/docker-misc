@@ -2,9 +2,10 @@
 trap exit 0 SIGTERM
 export LANG=en_US.UTF-8
 
-TIMEZONE=${TIMEZONE:-"America/Chicago"}
-echo $TIMEZONE > /etc/timezone
-dpkg-reconfigure -f noninteractive tzdata
+if [ -z "$TZ" ]; then
+   echo $TZ > /etc/timezone
+   dpkg-reconfigure -f noninteractive tzdata
+fi
 
 # Get current version
 [ -f /data/HomeSeer/version.txt ] && VERSION=$(cat /data/HomeSeer/version.txt)
