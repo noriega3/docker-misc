@@ -35,4 +35,4 @@ VOLUME /config
 
 EXPOSE 8080
 
-CMD ["mono", "/opt/vrs/VirtualRadar.exe", "-nogui", "-createAdmin:admin", "-password:password"]
+CMD ["mono", "/opt/vrs/VirtualRadar.exe", "-nogui"]
