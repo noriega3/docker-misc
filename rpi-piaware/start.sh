@@ -11,15 +11,16 @@ if [ -z "${PASSWORD}" ]; then
 fi
 
 if [ -n "${GPSD}" ]; then
-    echo "Forwarding port 2947 to ${GPSD}"
-    socat -s TCP-LISTEN:2947,fork TCP:${GPSD}:2947 &
+    echo "GPSD specified, forwarding port 2947 to ${GPSD}"
+    /usr/bin/socat -s TCP-LISTEN:2947,fork TCP:${GPSD}:2947 &
 fi
 
 if [ -n "${FEEDID}" ]; then
-    piaware-config feeder-id ${FEEDID}
+    /usr/bin/piaware-config feeder-id ${FEEDID}
 fi
 
-piaware-config flightaware-user ${USER}
-piaware-config flightaware-password ${PASSWORD}
+/usr/bin/piaware-config flightaware-user ${USER}
+/usr/bin/piaware-config flightaware-password ${PASSWORD}
+mkdir -p /run/piaware
 
-exec /usr/bin/piaware -debug $*
+exec /usr/bin/piaware -p /run/piaware/piaware.pid -debug -statusfile /run/piaware/status.json $*
