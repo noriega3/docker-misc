@@ -10,4 +10,6 @@ RUN dpkg -i /piaware-repository_${VERSION}_all.deb && rm /piaware-repository_${V
 
 COPY piaware.conf /etc
 
+EXPOSE 30105
+
 ENTRYPOINT ["/usr/bin/piaware","-debug"]
