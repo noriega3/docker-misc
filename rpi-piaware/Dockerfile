@@ -3,6 +3,7 @@ FROM resin/rpi-raspbian
 ENV VERSION=3.5.0
 ENV USER=
 ENV PASSWORD=
+ENV FEEDID=
 ENV GPSD=
 
 ADD http://flightaware.com/adsb/piaware/files/packages/pool/piaware/p/piaware-support/piaware-repository_${VERSION}_all.deb /
