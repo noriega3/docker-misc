@@ -6,9 +6,7 @@ ADD http://flightaware.com/adsb/piaware/files/packages/pool/piaware/p/piaware-su
 
 RUN dpkg -i /piaware-repository_${VERSION}_all.deb && rm /piaware-repository_${VERSION}_all.deb && \
     apt-get update && apt-get install --no-install-recommends piaware socat && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    piaware-config allow-auto-updates yes && \
-    piaware-config allow-manual-updates yes
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY piaware.conf /etc
 
