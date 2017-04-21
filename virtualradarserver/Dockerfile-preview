@@ -7,9 +7,6 @@ RUN mkdir -p /opt/vrs \
 RUN curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.WebAdminPlugin.tar.gz \
     | tar -xzC /opt/vrs
 
-RUN curl -SL http://www.virtualradarserver.co.uk/Files/VirtualRadar.exe.config.tar.gz \
-    | tar -xC /opt/vrs
-
 RUN curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.DatabaseWriterPlugin.tar.gz \
     | tar -xzC /opt/vrs
 
