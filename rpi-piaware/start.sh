@@ -23,4 +23,4 @@ fi
 /usr/bin/piaware-config flightaware-password ${PASSWORD}
 mkdir -p /run/piaware
 
-exec /usr/bin/piaware -p /run/piaware/piaware.pid -debug -statusfile /run/piaware/status.json $*
+exec /usr/bin/piaware -p /run/piaware/piaware.pid -plainlog -statusfile /run/piaware/status.json $*
