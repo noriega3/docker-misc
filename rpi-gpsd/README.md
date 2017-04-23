@@ -12,6 +12,6 @@ Example:
 ```
 docker run -t -i --name=gpsd \
   -p 2947:2947 \
-  --device=/dev/ttyS0:/dev/ttyAMA0 \
-  bradsjm/rpi-gpsd /dev/ttyAMA0
+  --device=/dev/ttyAMA0:/dev/ttyAMA0 \
+  bradsjm/rpi-gpsd -D2 /dev/ttyAMA0
 ```
