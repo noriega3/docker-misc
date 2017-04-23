@@ -10,6 +10,6 @@ RUN apk add --no-cache libusb git build-base libusb-dev && \
     cd / && rm -r /dump1090 && \
     apk del git build-base libusb-dev
 
-EXPOSE 30001 30002 30003
+EXPOSE 30001 30002 30003 30004 30005 30104
 
 ENTRYPOINT ["/usr/bin/dump1090"]
