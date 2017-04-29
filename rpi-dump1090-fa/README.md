@@ -7,4 +7,4 @@ docker run -t -i --device /dev/bus/usb:/dev/bus/usb --help
 ```
 
 ---
-https://github.com/bradsjm/Dockerfiles/tree/master/rpi-dump1090
+https://github.com/bradsjm/Dockerfiles/tree/master/rpi-dump1090-fa

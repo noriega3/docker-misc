@@ -3,7 +3,7 @@ This is a Alpine Linux based build of Mutabilities Dump1090 fork from https://gi
 
 Example:
 ```
-docker run -t -i --device /dev/usb:/dev/usb --help
+docker run -t -i --device /dev/bus/usb:/dev/bus/usb --help
 ```
 
 ---
