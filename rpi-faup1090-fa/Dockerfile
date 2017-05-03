@@ -11,7 +11,7 @@ RUN apk add --no-cache libusb socat ncurses git build-base libusb-dev ncurses-de
 COPY start.sh /
 RUN  chmod u+x /start.sh
 
-ENV PORT=30105
+ENV PORT=10001
 
 EXPOSE ${PORT}
 
