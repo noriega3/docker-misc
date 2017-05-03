@@ -1,35 +1,27 @@
 FROM mono:latest
 
-RUN mkdir -p /opt/vrs \
-    && curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.tar.gz \
-    | tar -xzC /opt/vrs
-
-RUN curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.WebAdminPlugin.tar.gz \
-    | tar -xzC /opt/vrs
-
-RUN curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.DatabaseWriterPlugin.tar.gz \
-    | tar -xzC /opt/vrs
-
-RUN curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.CustomContentPlugin.tar.gz \
-    | tar -xzC /opt/vrs
-
-RUN curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.DatabaseEditorPlugin.tar.gz \
+RUN mkdir -p /opt/vrs && \
+    curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.tar.gz \
+    | tar -xzC /opt/vrs && \
+    curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.WebAdminPlugin.tar.gz \
+    | tar -xzC /opt/vrs && \
+    curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.DatabaseWriterPlugin.tar.gz \
+    | tar -xzC /opt/vrs && \
+    curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.CustomContentPlugin.tar.gz \
+    | tar -xzC /opt/vrs && \
+    curl -SL http://www.virtualradarserver.co.uk/Files/Preview/VirtualRadar.DatabaseEditorPlugin.tar.gz \
     | tar -xzC /opt/vrs
 
 ADD ./logos.tar.gz /opt/vrs/Flags
-
 ADD ./sideviews.tar.gz /opt/vrs/Silhouettes
 
-RUN mkdir -p /config \
-    && mkdir -p /root/.local/share \
-    && ln -sf /config /root/.local/share/VirtualRadar
-
-RUN chown -R root:root /opt/vrs
-
-WORKDIR /opt/vrs
+RUN mkdir -p /config && \
+    mkdir -p /root/.local/share && \
+    ln -sf /config /root/.local/share/VirtualRadar && \
+    chown -R root:root /opt/vrs
 
 VOLUME /config
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD ["mono", "/opt/vrs/VirtualRadar.exe", "-nogui"]
+ENTRYPOINT ["mono", "/opt/vrs/VirtualRadar.exe", "-nogui"]
