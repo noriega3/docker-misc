@@ -1,6 +1,7 @@
 FROM hypriot/rpi-alpine:latest
 
-RUN apk add --no-cache gpsd
+RUN apk add --no-cache gpsd && \
+    rmdir /var/run && ln -s /run /var
 
 EXPOSE 2947
 
