@@ -11,8 +11,8 @@ if [ -n "$IGSERVER" ]; then
 fi
 
 if [ -n "$IGLOGIN" ]; then
-  sed -i 's|^#IGLOGIN.*$|IGLOGIN '"$IGLOGIN"'|g' sdr.conf
+  sed -i 's|^IGLOGIN.*$|IGLOGIN '"$IGLOGIN"'|g' sdr.conf
 fi
 
 # Start Direwolf
-rtl_fm -f $FREQUENCY ${*} - | /usr/local/bin/direwolf -c sdr.conf -r 24000 -D 1 -a 100 -
+rtl_fm -f $FREQUENCY ${*} - | direwolf -c sdr.conf -t 0 -r 24000 -D 1 -a 100 -
