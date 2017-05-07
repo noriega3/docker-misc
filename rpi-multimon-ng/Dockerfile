@@ -2,7 +2,7 @@ FROM bradsjm/rpi-rtl-sdr:latest
 
 COPY multimon-ng.pro /tmp
 
-RUN apk add --no-cache git build-base qt qt-dev && \
+RUN apk add --no-cache git build-base libgcc qt-dev && \
     git clone https://github.com/EliasOenal/multimon-ng.git /tmp/multimon-ng && \
     cd /tmp/multimon-ng && \
     mv /tmp/multimon-ng.pro . && \
