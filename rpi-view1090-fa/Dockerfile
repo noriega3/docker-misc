@@ -1,9 +1,7 @@
 FROM hypriot/rpi-alpine:latest
 
-WORKDIR /tmp
-
 RUN apk add --no-cache libusb ncurses git build-base libusb-dev ncurses-dev && \
-    git clone https://github.com/flightaware/dump1090.git && \
+    git clone https://github.com/flightaware/dump1090.git /tmp/dump190 && \
     cd /tmp/dump1090 && \
     make view1090 BLADERF=no RTLSDR=no && \
     cp -a view1090 /usr/bin && \
