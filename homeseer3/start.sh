@@ -25,7 +25,7 @@ chown -R root:root /data
 
 # bug fix for case sensitive filesystems
 # without this myhs.homeseer.com wont load icons
-ln -s /data/HomeSeer/html/images/homeseer /data/HomeSeer/html/images/HomeSeer
+ln -sf /data/HomeSeer/html/images/homeseer /data/HomeSeer/html/images/HomeSeer
 
 # Execute
 cd /data/HomeSeer && exec mono HSConsole.exe --log
