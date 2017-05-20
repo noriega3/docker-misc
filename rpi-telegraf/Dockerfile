@@ -16,19 +16,20 @@ RUN set -ex && \
         gpg --keyserver pgp.mit.edu --recv-keys "$key" || \
         gpg --keyserver keyserver.pgp.com --recv-keys "$key" ; \
     done && \
-    wget -q https://dl.influxdata.com/telegraf/releases/telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz.asc && \
-    wget -q https://dl.influxdata.com/telegraf/releases/telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz && \
-    gpg --batch --verify telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz.asc telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz && \
+    wget -q https://dl.influxdata.com/telegraf/releases/telegraf-${TELEGRAF_VERSION}_linux_armhf.tar.gz.asc && \
+    wget -q https://dl.influxdata.com/telegraf/releases/telegraf-${TELEGRAF_VERSION}_linux_armhf.tar.gz && \
+    gpg --batch --verify telegraf-${TELEGRAF_VERSION}_linux_armhf.tar.gz.asc telegraf-${TELEGRAF_VERSION}_linux_armhf.tar.gz && \
     mkdir -p /usr/src /etc/telegraf && \
-    tar -C /usr/src -xzf telegraf-${TELEGRAF_VERSION}-static_linux_amd64.tar.gz && \
-    mv /usr/src/telegraf*/telegraf.conf /etc/telegraf/ && \
-    chmod +x /usr/src/telegraf*/* && \
-    cp -a /usr/src/telegraf*/* /usr/bin/ && \
+    tar -C /usr/src -xzf telegraf-${TELEGRAF_VERSION}_linux_armhf.tar.gz && \
+    mv /usr/src/telegraf*/etc/telegraf/telegraf.conf /etc/telegraf/ && \
+    chmod +x /usr/src/telegraf*/usr/bin/* && \
+    cp -a /usr/src/telegraf*/usr/bin/* /usr/bin/ && \
     rm -rf *.tar.gz* /usr/src /root/.gnupg && \
     apk del .build-deps wget gnupg tar
 
 EXPOSE 8125/udp 8092/udp 8094
 
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod u+x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["telegraf"]
