@@ -13,7 +13,6 @@ ENV FREQUENCY 144.39M
 EXPOSE 8000 8001
 
 RUN apk add --no-cache git alsa-lib alsa-lib-dev linux-headers build-base && \
-    rmdir /var/run && ln -s /run /var && \
     git clone git://www.github.com/wb2osz/direwolf /tmp/direwolf && \
     echo "#include <unistd.h>" > /usr/include/sys/unistd.h && \
     cd /tmp/direwolf && \

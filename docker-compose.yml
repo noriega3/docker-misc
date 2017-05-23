@@ -3,7 +3,7 @@ version: '3'
 services:
   rpi-rtl-sdr:
     image: bradsjm/rpi-rtl-sdr
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-rti-sdr
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-rtl-sdr
 
   rpi-gpsd:
     image: bradsjm/rpi-gpsd
