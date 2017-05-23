@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  rpi-rtl-sdr:
+    image: bradsjm/rpi-rtl-sdr
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-rti-sdr
+
+  rpi-gpsd:
+    image: bradsjm/rpi-gpsd
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-gpsd
+
+  rpi-chrony:
+    image: bradsjm/rpi-chrony
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-chrony
+
+  rpi-dump1090-fa:
+    image: bradsjm/rpi-dump1090-fa
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-dump1090-fa
+    depends_on: 
+      - rpi-rtl-sdr
+
+  rpi-view1090-fa:
+    image: bradsjm/rpi-view1090-fa
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-view1090-fa
+
+  rpi-faup1090-fa:
+    image: bradsjm/rpi-view1090-fa
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-faup1090-fa
+
+  rpi-direwolf:
+    image: bradsjm/rpi-direwolf
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-direwolf
+    depends_on: 
+      - rpi-rtl-sdr
+
+  rpi-piaware:
+    image: bradsjm/rpi-piaware
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-piaware
+
+  rpi-multimon-ng:
+    image: bradsjm/rpi-multimon-ng
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-multimon-ng
+    depends_on: 
+      - rpi-rtl-sdr
+
+  rpi-socat:
+    image: bradsjm/rpi-socat
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-socat
+
+  rpi-mlat-client:
+    image: bradsjm/rpi-mlat-client
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-mlat-client
+
+  rpi-planefinder:
+    image: bradsjm/rpi-planefinder
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-planefinder
+
+  rpi-telegraf:
+    image: bradsjm/rpi-telegraf
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-telegraf
+
+  homeseer3:
+    image: bradsjm/homeseer3
+    build: https://github.com/bradsjm/Dockerfiles.git#:homeseer3
+
+  virtualradarserver:
+    image: bradsjm/virtualradarserver
+    build: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver

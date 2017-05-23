@@ -1,7 +1,6 @@
 FROM resin/armhf-alpine:latest
 
-RUN apk add --no-cache chrony && \
-    rmdir /var/run && ln -s /run /var
+RUN apk add --no-cache chrony
 
 COPY chrony.conf /etc/chrony/chrony.conf
 

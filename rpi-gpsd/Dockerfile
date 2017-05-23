@@ -1,7 +1,6 @@
 FROM resin/armhf-alpine:latest
 
-RUN apk add --no-cache gpsd && \
-    rmdir /var/run && ln -s /run /var
+RUN apk add --no-cache gpsd
 
 EXPOSE 2947
 
