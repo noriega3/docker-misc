@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine:latest
+FROM resin/armhf-alpine:latest
 
 RUN apk add --no-cache libusb socat ncurses git build-base libusb-dev ncurses-dev && \
     git clone https://github.com/flightaware/dump1090.git /tmp/dump1090 && \
