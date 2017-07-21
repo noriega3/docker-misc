@@ -10,5 +10,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./services /etc/services
+ADD ./silhouettes.tar.gz /var/images/silhouettes
 
-ENTRYPOINT ["/usr/local/bin/modesmixer2"]
+ENTRYPOINT ["/usr/local/bin/modesmixer2","--silhouettes","/var/images/silhouettes"]
