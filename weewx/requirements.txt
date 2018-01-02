@@ -1,0 +1,7 @@
+pysqlite
+configobj
+Cheetah
+Pillow
+pyserial
+pyusb
+pyephem
