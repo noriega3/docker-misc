@@ -66,3 +66,7 @@ services:
   virtualradarserver:
     image: bradsjm/virtualradarserver
     build: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver
+
+  weewx:
+    image: bradsjm/weewx
+    build: https://github.com/bradsjm/Dockerfiles.git#:weewx
