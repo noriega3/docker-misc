@@ -75,3 +75,7 @@ services:
     image: bradsjm/sonos2mqtt
     build: https://github.com/bradsjm/Dockerfiles.git#:sonos2mqtt
   
+  onkyo2mqtt:
+    image: bradsjm/onkyo2mqtt
+    build: https://github.com/bradsjm/Dockerfiles.git#:onkyo2mqtt
+  
