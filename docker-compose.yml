@@ -70,3 +70,8 @@ services:
   weewx:
     image: bradsjm/weewx
     build: https://github.com/bradsjm/Dockerfiles.git#:weewx
+
+  sonos2mqtt:
+    image: bradsjm/sonos2mqtt
+    build: https://github.com/bradsjm/Dockerfiles.git#:sonos2mqtt
+  
