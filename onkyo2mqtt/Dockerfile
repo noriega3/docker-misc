@@ -1,7 +1,8 @@
 FROM python:latest
 
 RUN easy_install onkyo-eiscp && \
-    easy_install paho-mqtt && \
-    git clone https://github.com/owagner/onkyo2mqtt.git /usr/src/app/onkyo2mqtt
+    easy_install paho-mqtt
 
-ENTRYPOINT [ "/usr/local/bin/python", "/usr/src/app/onkyo2mqtt/onkyo2mqtt.py" ]
+COPY onkyo2mqtt.py /usr/src/app
+
+ENTRYPOINT [ "/usr/local/bin/python", "/usr/src/app/onkyo2mqtt.py" ]
