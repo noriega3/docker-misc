@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:2
 
 RUN easy_install onkyo-eiscp && \
     easy_install paho-mqtt
