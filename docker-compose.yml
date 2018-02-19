@@ -59,6 +59,10 @@ services:
     image: bradsjm/rpi-telegraf
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-telegraf
 
+  rpi-node-red:
+    image: bradsjm/rpi-node-red
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
+
   homeseer3:
     image: bradsjm/homeseer3
     build: https://github.com/bradsjm/Dockerfiles.git#:homeseer3
