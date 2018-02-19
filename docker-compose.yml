@@ -63,6 +63,10 @@ services:
     image: bradsjm/rpi-node-red
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
 
+  node-red:
+    image: bradsjm/node-red
+    build: https://github.com/bradsjm/Dockerfiles.git#:node-red
+
   homeseer3:
     image: bradsjm/homeseer3
     build: https://github.com/bradsjm/Dockerfiles.git#:homeseer3
