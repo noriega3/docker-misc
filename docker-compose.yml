@@ -63,6 +63,10 @@ services:
     image: bradsjm/rpi-node-red
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
 
+  rpi-frontail:
+    image: bradsjm/rpi-frontail
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-frontail
+
   node-red:
     image: bradsjm/node-red
     build: https://github.com/bradsjm/Dockerfiles.git#:node-red
