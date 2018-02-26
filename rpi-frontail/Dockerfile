@@ -6,8 +6,9 @@ RUN apk add -q -U --no-cache git && \
     cd frontail && npm install && \
     apk del git
 
-COPY ./openhab.json /usr/src/frontall/preset/default.json
-COPY ./theme.css /usr/src/frontall/web/assets/styles/default.css
+COPY ./openhab.json /usr/src/frontail/preset/default.json
+
+VOLUME /data
 
 ENTRYPOINT ["/usr/src/frontail/bin/frontail"]
 EXPOSE 9001
