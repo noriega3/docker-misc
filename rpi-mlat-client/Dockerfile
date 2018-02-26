@@ -1,4 +1,4 @@
-FROM resin/armhf-alpine:latest
+FROM multiarch/alpine:armhf-latest-stable
 
 RUN apk add --no-cache git build-base python3 python3-dev && \
     git clone https://github.com/mutability/mlat-client.git /tmp/mlat-client && \

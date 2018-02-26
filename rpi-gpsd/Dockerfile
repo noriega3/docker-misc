@@ -1,4 +1,4 @@
-FROM resin/armhf-alpine:latest
+FROM multiarch/alpine:armhf-latest-stable
 
 RUN apk add --no-cache gpsd
 

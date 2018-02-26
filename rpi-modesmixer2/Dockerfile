@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:latest
+FROM multiarch/alpine:armhf-latest-stable
 
 ENV ID=0B7NYXizl0U6iVGlEOEw5RUQwdkk
 

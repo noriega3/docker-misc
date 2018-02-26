@@ -1,4 +1,4 @@
-FROM resin/raspberry-pi-alpine-node:8
+FROM arm32v6/node:8-alpine
 
 RUN npm install frontail@4.0.4 --global
 

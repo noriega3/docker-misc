@@ -1,4 +1,4 @@
-FROM resin/armhf-alpine:latest
+FROM multiarch/alpine:armhf-latest-stable
 
 RUN apk add --no-cache libusb git build-base cmake libusb-dev && \
     git clone git://git.osmocom.org/rtl-sdr.git /tmp/rtl-sdr && \
