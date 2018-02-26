@@ -102,7 +102,12 @@ services:
   onkyo2mqtt:
     image: bradsjm/onkyo2mqtt
     build: https://github.com/bradsjm/Dockerfiles.git#:onkyo2mqtt
-  
+
   lifx2mqtt:
     image: bradsjm/lifx2mqtt
     build: https://github.com/bradsjm/Dockerfiles.git#:lifx2mqtt
+
+  videoslimmer:
+    image: bradsjm/videoslimmer
+    build: https://github.com/bradsjm/Dockerfiles.git#:videoslimmer
+  
