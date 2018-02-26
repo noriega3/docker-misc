@@ -7,4 +7,4 @@ RUN apk add --no-cache libusb git build-base cmake libusb-dev && \
     cd / && rm -r /tmp/rtl-sdr && \
     apk del git build-base cmake libusb-dev
 
-CMD ["/bin/ash"]
+CMD ["/bin/sh"]

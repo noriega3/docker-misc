@@ -1,8 +1,6 @@
 FROM arm32v6/node:8-alpine
 
 # add support for gpio library
-#RUN apt-get update && \
-#    apt-get install python-rpi.gpio
 RUN apk add -q -U --no-cache \
     ca-certificates \
     curl \
@@ -10,7 +8,6 @@ RUN apk add -q -U --no-cache \
 
 # Home directory for Node-RED application source code.
 # User data directory, contains flows, config and nodes.
-
 WORKDIR /usr/src/node-red
 
 # Add node-red user so we aren't running as root.

@@ -1,7 +1,14 @@
 FROM arm32v6/node:8-alpine
 
-RUN npm install frontail@4.0.4 --global
+RUN apk add -q -U --no-cache git && \
+    mkdir -p /usr/src && cd /usr/src && \
+    git clone https://github.com/mthenw/frontail.git && \
+    cd frontail && npm install && \
+    apk del git
 
-ENTRYPOINT ["frontail"]
+COPY ./openhab.json /usr/src/frontall/preset/default.json
+COPY ./theme.css /usr/src/frontall/web/assets/styles/default.css
+
+ENTRYPOINT ["/usr/src/frontail/bin/frontail"]
 EXPOSE 9001
 CMD ["--help"]

@@ -3,8 +3,6 @@ FROM bradsjm/rpi-rtl-sdr:latest
 # Note: Run the image with the following options:
 #	--device /dev/bus/usb:/dev/bus/usb
 
-MAINTAINER jonathan@nrgup.net
-
 ENV MYCALL n0call
 ENV IGSERVER noam.aprs2.net
 ENV IGLOGIN n0call -1
