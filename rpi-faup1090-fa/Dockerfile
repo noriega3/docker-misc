@@ -4,8 +4,9 @@ RUN apk add --no-cache libusb socat ncurses git build-base libusb-dev ncurses-de
     git clone https://github.com/flightaware/dump1090.git /tmp/dump1090 && \
     cd /tmp/dump1090 && \
     make faup1090 BLADERF=no RTLSDR=no && \
-    cp -a faup1090 /usr/bin && \
+    cp -a faup1090 /usr/local/bin && \
     cd / && rm -r /tmp/dump1090 && \
+    find /usr/local/bin -type f -exec strip -p --strip-debug {} \; && \
     apk del git build-base libusb-dev ncurses-dev
 
 COPY start.sh /
