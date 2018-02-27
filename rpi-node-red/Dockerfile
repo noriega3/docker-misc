@@ -19,10 +19,14 @@ RUN addgroup node-red && \
     chown -R node-red:node-red /data && \
     chown -R node-red:node-red /usr/src/node-red
 
+# Need to build bcrypt dependency on arm as no binary exists
+RUN apk add -q -u --no-cache --virtual builds-deps build-base python && \
+	npm rebuild bcrypt --build-from-source && \
+    apk del builds-deps
+
 # package.json contains Node-RED NPM module and node dependencies
-#COPY package.json /usr/src/node-red/
 RUN curl -SLo package.json --progress-bar https://raw.githubusercontent.com/node-red/node-red-docker/master/package.json && \
-    npm install --save bcrypt-nodejs && npm uninstall --save bcrypt
+    npm install
 
 # User configuration directory volume
 EXPOSE 1880
