@@ -79,6 +79,10 @@ services:
     image: bradsjm/rpi-openhab2
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-openhab2
 
+  rpi-influxdb:
+    image: bradsjm/rpi-influxdb
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-influxdb
+
   node-red:
     image: bradsjm/node-red
     build: https://github.com/bradsjm/Dockerfiles.git#:node-red

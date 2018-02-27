@@ -25,7 +25,8 @@ RUN apk add -q -U --no-cache \
 
 # Install OpenHAB - https://www.openhab.org/ and enable SSH
 #   Enables SSH server for console access
-RUN OPENHAB_URL=https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-${OPENHAB_VERSION}.tar.gz && \
+RUN set -ex && \
+    OPENHAB_URL=https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-${OPENHAB_VERSION}.tar.gz && \
     mkdir -p ${OPENHAB_HOME} ${OPENHAB_CONF} ${OPENHAB_USERDATA} ${OPENHAB_LOGDIR} ${OPENHAB_BACKUPS} && \
     curl -SL --progress-bar ${OPENHAB_URL} | tar xzC ${OPENHAB_HOME} && \
     sed -i -e "/sshHost = 0.0.0.0/s/^#//g" ${OPENHAB_CONF}/services/runtime.cfg

@@ -5,7 +5,8 @@ ENV LC_ALL="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
 # Upgrade required for ttf font install to work properly
-RUN apk upgrade -q -U -a --no-cache && \
+RUN set -ex && \
+	apk upgrade -q -U -a --no-cache && \
     apk add -q -U --no-cache \
     ca-certificates \
     curl \
