@@ -1,9 +1,15 @@
 version: '3'
 
 services:
-  rpi-rtl-sdr:
-    image: bradsjm/rpi-rtl-sdr
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-rtl-sdr
+  rpi-alpine-glibc:
+    image: bradsjm/rpi-alpine-glibc
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-alpine-glibc
+  
+  rpi-zulu-openjdk:
+    image: bradsjm/rpi-zulu-openjdk
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-zulu-openjdk
+    depends_on: 
+      - rpi-alpine-glibc
 
   rpi-gpsd:
     image: bradsjm/rpi-gpsd
@@ -13,9 +19,25 @@ services:
     image: bradsjm/rpi-chrony
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-chrony
 
+  rpi-rtl-sdr:
+    image: bradsjm/rpi-rtl-sdr
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-rtl-sdr
+
   rpi-dump1090-fa:
     image: bradsjm/rpi-dump1090-fa
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-dump1090-fa
+    depends_on: 
+      - rpi-rtl-sdr
+
+  rpi-multimon-ng:
+    image: bradsjm/rpi-multimon-ng
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-multimon-ng
+    depends_on: 
+      - rpi-rtl-sdr
+
+  rpi-direwolf:
+    image: bradsjm/rpi-direwolf
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-direwolf
     depends_on: 
       - rpi-rtl-sdr
 
@@ -27,21 +49,9 @@ services:
     image: bradsjm/rpi-view1090-fa
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-faup1090-fa
 
-  rpi-direwolf:
-    image: bradsjm/rpi-direwolf
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-direwolf
-    depends_on: 
-      - rpi-rtl-sdr
-
   rpi-piaware:
     image: bradsjm/rpi-piaware
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-piaware
-
-  rpi-multimon-ng:
-    image: bradsjm/rpi-multimon-ng
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-multimon-ng
-    depends_on: 
-      - rpi-rtl-sdr
 
   rpi-socat:
     image: bradsjm/rpi-socat
@@ -67,14 +77,6 @@ services:
     image: bradsjm/rpi-frontail
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-frontail
 
-  rpi-alpine-glibc:
-    image: bradsjm/rpi-alpine-glibc
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-alpine-glibc
-  
-  rpi-zulu-openjdk:
-    image: bradsjm/rpi-zulu-openjdk
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-zulu-openjdk
-
   rpi-openhab2:
     image: bradsjm/rpi-openhab2
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-openhab2
@@ -82,6 +84,10 @@ services:
   rpi-influxdb:
     image: bradsjm/rpi-influxdb
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-influxdb
+
+  rpi-ozwcp:
+    image: bradsjm/rpi-ozwcp
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-ozwcp
 
   node-red:
     image: bradsjm/node-red
@@ -114,4 +120,3 @@ services:
   videoslimmer:
     image: bradsjm/videoslimmer
     build: https://github.com/bradsjm/Dockerfiles.git#:videoslimmer
-  
