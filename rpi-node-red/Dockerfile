@@ -1,10 +1,12 @@
-FROM arm32v6/node:8-alpine
+FROM multiarch/alpine:armhf-latest-stable
 
 # add support for gpio library
 RUN apk add -q -U --no-cache \
     ca-certificates \
     curl \
-    py-rpigpio
+    nodejs \
+    py-rpigpio \
+    su-exec
 
 # Home directory for Node-RED application source code.
 # User data directory, contains flows, config and nodes.
@@ -17,12 +19,10 @@ RUN addgroup node-red && \
     chown -R node-red:node-red /data && \
     chown -R node-red:node-red /usr/src/node-red
 
-USER node-red
-
 # package.json contains Node-RED NPM module and node dependencies
 #COPY package.json /usr/src/node-red/
 RUN curl -SLo package.json --progress-bar https://raw.githubusercontent.com/node-red/node-red-docker/master/package.json && \
-    npm install
+    npm install --save bcrypt-nodejs && npm uninstall --save bcrypt
 
 # User configuration directory volume
 EXPOSE 1880
@@ -30,8 +30,10 @@ EXPOSE 1880
 # Healthcheck
 HEALTHCHECK CMD curl -q --fail http://localhost:1880/ || exit 1
 
+VOLUME /data
+
 # Environment variable holding file path for flows configuration
 ENV FLOWS=flows.json \
     NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules
 
-CMD ["npm", "start", "--", "--userDir", "/data"]
+CMD ["su-exec", "node-red", "npm", "start", "--", "--userDir", "/data"]
