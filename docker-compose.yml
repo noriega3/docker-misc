@@ -69,9 +69,9 @@ services:
     image: bradsjm/rpi-telegraf
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-telegraf
 
-  rpi-node-red:
-    image: bradsjm/rpi-node-red
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
+#  rpi-node-red:
+#    image: bradsjm/rpi-node-red
+#    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
 
   rpi-frontail:
     image: bradsjm/rpi-frontail
