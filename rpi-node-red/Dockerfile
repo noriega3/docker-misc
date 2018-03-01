@@ -13,8 +13,8 @@ RUN apk add -q -U --no-cache \
 WORKDIR /usr/src/node-red
 
 # Add node-red user so we aren't running as root.
-RUN addgroup node-red && \
-    adduser -h /usr/src/node-red -G node-red -D -H node-red && \
+RUN addgroup -g 501 node-red && \
+    adduser -u 501 -h /usr/src/node-red -G node-red -D -H node-red && \
     mkdir -p /usr/src/node-red /data && \
     chown -R node-red:node-red /data && \
     chown -R node-red:node-red /usr/src/node-red
