@@ -20,7 +20,7 @@ RUN apk add -q -U --no-cache \
     sed -i 's/LIBS := $(LIBZWAVE) $(GNUTLS) $(LIBMICROHTTPD) -pthread $(LIBUSB) $(ARCH) -lresolv/#LIBS := $(LIBZWAVE) $(GNUTLS) $(LIBMICROHTTPD) -pthread $(LIBUSB) $(ARCH) -lresolv/' Makefile && \
     make && \
     ln -sd ../open-zwave/config && \
-    find /usr/app -type f -exec strip -p --strip-debug {} \; && \
+    strip -p --strip-debug /usr/app/open-zwave-control-panel/ozwcp && \
     apk del libmicrohttpd-dev gcc git make g++ linux-headers libusb-dev eudev-dev coreutils
 
 EXPOSE 8090
