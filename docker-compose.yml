@@ -101,6 +101,12 @@ services:
     image: bradsjm/virtualradarserver
     build: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver
 
+  virtualradarserver-preview:
+    image: bradsjm/virtualradarserver:preview
+    build: 
+      context: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver
+      dockerfile: ./Dockerfile-preview
+
   weewx:
     image: bradsjm/weewx
     build: https://github.com/bradsjm/Dockerfiles.git#:weewx

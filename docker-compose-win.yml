@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  virtualradarserver-win:
+    image: bradsjm/virtualradarserver:windows
+    build: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver-win
