@@ -1,6 +1,6 @@
-FROM arm32v6/node:8-alpine
+FROM multiarch/alpine:armhf-latest-stable
 
-RUN apk add -q -U --no-cache git curl && \
+RUN apk add -q -U --no-cache nodejs git curl && \
     mkdir -p /usr/src && cd /usr/src && \
     git clone https://github.com/mthenw/frontail.git && \
     cd frontail && npm install && \
