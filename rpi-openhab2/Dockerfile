@@ -41,7 +41,8 @@ VOLUME "/opt/openhab/conf" \
 EXPOSE 8080 8443 8101 5007
 
 # Set up Healthcheck to check HTTP port
-HEALTHCHECK CMD curl -q --fail -X GET --header "Accept: text/plain" "http://openhabian:8080/rest/uuid" || exit 1
+HEALTHCHECK --start-period=3m \
+    CMD curl -q --fail -X GET --header "Accept: text/plain" "http://localhost:8080/rest/uuid" || exit 1
 
 # Set working directory and entrypoint
 WORKDIR ${OPENHAB_HOME}

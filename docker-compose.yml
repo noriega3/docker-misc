@@ -93,6 +93,10 @@ services:
     image: bradsjm/rpi-ozwcp
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-ozwcp
 
+  rpi-mosquitto:
+    image: bradsjm/rpi-mosquitto
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-mosquitto
+
   node-red:
     image: bradsjm/node-red
     build: https://github.com/bradsjm/Dockerfiles.git#:node-red
