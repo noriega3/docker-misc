@@ -69,6 +69,10 @@ services:
     image: bradsjm/rpi-telegraf
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-telegraf
 
+  rpi-samba:
+    image: bradsjm/rpi-samba
+    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-samba
+
 #  rpi-node-red:
 #    image: bradsjm/rpi-node-red
 #    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
