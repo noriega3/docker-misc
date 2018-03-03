@@ -89,18 +89,24 @@ recycle() { local file=/etc/samba/smb.conf
 #   comment) description of share
 # Return: result
 share() { local share="$1" path="$2" browsable="${3:-yes}" ro="${4:-yes}" \
-                guest="${5:-yes}" users="${6:-""}" admins="${7:-""}" \
-                writelist="${8:-""}" comment="${9:-""}" file=/etc/samba/smb.conf
+                guest="${5:-yes}" forceuser=${6:-""} forcegroup=${7:-""} \
+                users="${8:-""}" admins="${9:-""}" \
+                writelist="${10:-""}" comment="${11:-""}" \
+                file=/etc/samba/smb.conf
     sed -i "/\\[$share\\]/,/^\$/d" $file
     echo "[$share]" >>$file
     echo "   path = $path" >>$file
     echo "   browsable = $browsable" >>$file
     echo "   read only = $ro" >>$file
     echo "   guest ok = $guest" >>$file
+    [[ ${forceuser:-""} ]] && echo "   force user = ${forceuser}" >>$file
+    [[ ${forcegroup:-""} ]] && echo "   force group = ${forcegroup}" >>$file
     echo -n "   veto files = /._*/.apdisk/.AppleDouble/.DS_Store/" >>$file
     echo -n ".TemporaryItems/.Trashes/desktop.ini/ehthumbs.db/" >>$file
     echo "Network Trash Folder/Temporary Items/Thumbs.db/" >>$file
     echo "   delete veto files = yes" >>$file
+    [[ ${users:-""} && ! ${users:-""} =~ all ]] &&
+        echo "   valid users = $(tr ',' ' ' <<< $users)" >>$file
     [[ ${users:-""} && ! ${users:-""} =~ all ]] &&
         echo "   valid users = $(tr ',' ' ' <<< $users)" >>$file
     [[ ${admins:-""} && ! ${admins:-""} =~ none ]] &&
@@ -131,7 +137,7 @@ smb() { local file=/etc/samba/smb.conf
 user() { local name="$1" passwd="$2" id="${3:-""}" group="${4:-""}"
     [[ "$group" ]] && { grep -q "^$group:" /etc/group || addgroup "$group"; }
     grep -q "^$name:" /etc/passwd ||
-        adduser -D -H ${group:+-G $group} ${id:+-u $id} "$name"
+        adduser -D -H -s /bin/false ${group:+-G $group} ${id:+-u $id} "$name"
     echo -e "$passwd\n$passwd" | smbpasswd -s -a "$name"
 }
 
@@ -170,7 +176,7 @@ Options (fields in '[]' are optional, '<>' are required):
     -p          Set ownership and permissions on the shares
     -r          Disable recycle bin for shares
     -S          Disable SMB2 minimum version
-    -s \"<name;/path>[;browse;readonly;guest;users;admins;writelist;comment]\"
+    -s \"<name;/path>[;browse;readonly;guest;user;group;users;admins;writelist;comment]\"
                 Configure a share
                 required arg: \"<name>;</path>\"
                 <name> is how it's called for clients
@@ -179,6 +185,8 @@ Options (fields in '[]' are optional, '<>' are required):
                 [browsable] default:'yes' or 'no'
                 [readonly] default:'yes' or 'no'
                 [guest] allowed default:'yes' or 'no'
+                [user] force user (default none)
+                [group] force group (default none)
                 [users] allowed default:'all' or list of allowed users
                 [admins] allowed default:'none' or list of admin users
                 [writelist] list of users that can write to a RO share

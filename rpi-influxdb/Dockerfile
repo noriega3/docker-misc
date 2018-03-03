@@ -1,7 +1,7 @@
 FROM multiarch/alpine:armhf-latest-stable
 
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
-RUN apk add --no-cache tzdata
+RUN apk add --no-cache tzdata curl
 
 ENV INFLUXDB_VERSION 1.4.3
 ENV ARCH linux_armhf
@@ -22,7 +22,7 @@ RUN set -ex && \
     tar -C /usr/src -xzf influxdb-${INFLUXDB_VERSION}_${ARCH}.tar.gz && \
     rm -f /usr/src/influxdb-*/influxdb.conf && \
     chmod +x /usr/src/influxdb-*/* && \
-    cp -a /usr/src/influxdb-*/* /usr/bin/ && \
+    cp -a /usr/src/influxdb-*/* / && \
     rm -rf *.tar.gz* /usr/src /root/.gnupg && \
     apk del .build-deps
 
@@ -31,6 +31,8 @@ COPY influxdb.conf /etc/influxdb/influxdb.conf
 EXPOSE 8086
 
 VOLUME /var/lib/influxdb
+
+HEALTHCHECK --interval=5s --retries=24 --timeout=1s CMD curl -sI 127.0.0.1:8086/ping | grep -q "204 No Content"
 
 COPY entrypoint.sh /entrypoint.sh
 COPY init-influxdb.sh /init-influxdb.sh
