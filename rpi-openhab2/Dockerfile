@@ -19,6 +19,7 @@ ENV EXTRA_JAVA_OPTS="" \
 
 # Install required packages
 RUN apk add -q -U --no-cache \
+    bluez \
     curl \
     su-exec \
     zip

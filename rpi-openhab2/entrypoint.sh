@@ -53,4 +53,5 @@ echo -n "Checking ownership of ${OPENHAB_HOME} ... "
 find ${OPENHAB_HOME} ! -user openhab ! -group openhab -exec chown -h openhab:openhab {} \+
 echo "Done"
 
+tail -f ${OPENHAB_LOGDIR}/events.log -f ${OPENHAB_LOGDIR}/openhab.log &
 exec "$@"
