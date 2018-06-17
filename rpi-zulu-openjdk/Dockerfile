@@ -12,7 +12,7 @@ RUN set -ex && \
     curl \
     fontconfig \
     ttf-dejavu && \
-	ZULU_ARCH="ezdk-1.8.0_152-8.25.0.76-eval-linux_aarch32hf.tar.gz" && \
+	ZULU_ARCH="ezdk-1.8.0_172-8.30.0.106-eval-linux_aarch32hf.tar.gz" && \
 	INSTALL_DIR=/usr/lib/jvm && \
 	BIN_DIR=/usr/bin && \
 	MAN_DIR=/usr/share/man/man1 && \
