@@ -4,11 +4,11 @@ services:
   rpi-alpine-glibc:
     image: bradsjm/rpi-alpine-glibc
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-alpine-glibc
-  
+
   rpi-zulu-openjdk:
     image: bradsjm/rpi-zulu-openjdk
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-zulu-openjdk
-    depends_on: 
+    depends_on:
       - rpi-alpine-glibc
 
   rpi-gpsd:
@@ -19,51 +19,21 @@ services:
     image: bradsjm/rpi-chrony
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-chrony
 
-  rpi-rtl-sdr:
-    image: bradsjm/rpi-rtl-sdr
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-rtl-sdr
-
-  rpi-dump1090-fa:
-    image: bradsjm/rpi-dump1090-fa
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-dump1090-fa
-    depends_on: 
-      - rpi-rtl-sdr
-
   rpi-multimon-ng:
     image: bradsjm/rpi-multimon-ng
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-multimon-ng
-    depends_on: 
+    depends_on:
       - rpi-rtl-sdr
 
   rpi-direwolf:
     image: bradsjm/rpi-direwolf
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-direwolf
-    depends_on: 
+    depends_on:
       - rpi-rtl-sdr
-
-  rpi-view1090-fa:
-    image: bradsjm/rpi-view1090-fa
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-view1090-fa
-
-  rpi-faup1090-fa:
-    image: bradsjm/rpi-view1090-fa
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-faup1090-fa
-
-  rpi-piaware:
-    image: bradsjm/rpi-piaware
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-piaware
 
   rpi-socat:
     image: bradsjm/rpi-socat
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-socat
-
-  rpi-mlat-client:
-    image: bradsjm/rpi-mlat-client
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-mlat-client
-
-  rpi-planefinder:
-    image: bradsjm/rpi-planefinder
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-planefinder
 
   rpi-telegraf:
     image: bradsjm/rpi-telegraf
@@ -73,64 +43,14 @@ services:
     image: bradsjm/rpi-samba
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-samba
 
-#  rpi-node-red:
-#    image: bradsjm/rpi-node-red
-#    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-node-red
-
   rpi-frontail:
     image: bradsjm/rpi-frontail
     build: https://github.com/bradsjm/Dockerfiles.git#:rpi-frontail
-
-  rpi-openhab2:
-    image: bradsjm/rpi-openhab2
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-openhab2
-
-  rpi-influxdb:
-    image: bradsjm/rpi-influxdb
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-influxdb
-
-  rpi-ozwcp:
-    image: bradsjm/rpi-ozwcp
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-ozwcp
-
-  rpi-mosquitto:
-    image: bradsjm/rpi-mosquitto
-    build: https://github.com/bradsjm/Dockerfiles.git#:rpi-mosquitto
-
-  node-red:
-    image: bradsjm/node-red
-    build: https://github.com/bradsjm/Dockerfiles.git#:node-red
 
   homeseer3:
     image: bradsjm/homeseer3
     build: https://github.com/bradsjm/Dockerfiles.git#:homeseer3
 
-  virtualradarserver:
-    image: bradsjm/virtualradarserver
-    build: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver
-
-  virtualradarserver-preview:
-    image: bradsjm/virtualradarserver:preview
-    build: 
-      context: https://github.com/bradsjm/Dockerfiles.git#:virtualradarserver
-      dockerfile: ./Dockerfile-preview
-
   weewx:
     image: bradsjm/weewx
     build: https://github.com/bradsjm/Dockerfiles.git#:weewx
-
-  sonos2mqtt:
-    image: bradsjm/sonos2mqtt
-    build: https://github.com/bradsjm/Dockerfiles.git#:sonos2mqtt
-  
-  onkyo2mqtt:
-    image: bradsjm/onkyo2mqtt
-    build: https://github.com/bradsjm/Dockerfiles.git#:onkyo2mqtt
-
-  lifx2mqtt:
-    image: bradsjm/lifx2mqtt
-    build: https://github.com/bradsjm/Dockerfiles.git#:lifx2mqtt
-
-  videoslimmer:
-    image: bradsjm/videoslimmer
-    build: https://github.com/bradsjm/Dockerfiles.git#:videoslimmer
