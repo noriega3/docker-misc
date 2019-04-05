@@ -2,8 +2,8 @@
 FROM multiarch/alpine:armhf-v3.9 as base
 
 RUN cat /etc/apk/repositories && \
-    echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
-    echo '@testing http://nl.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
+    echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
+    echo '@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
     cat /etc/apk/repositories && \
     apk add --no-cache tini librtlsdr@testing libusb socat
 
